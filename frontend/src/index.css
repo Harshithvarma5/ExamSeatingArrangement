@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+:root {
+  --color-primary: #0f172a;
+  --color-secondary: #2563eb;
+}
+
+@theme {
+  --color-primary-50: color-mix(in srgb, var(--color-primary) 10%, white);
+  --color-primary-100: color-mix(in srgb, var(--color-primary) 20%, white);
+  --color-primary-200: color-mix(in srgb, var(--color-primary) 30%, white);
+  --color-primary-300: color-mix(in srgb, var(--color-primary) 50%, white);
+  --color-primary-400: color-mix(in srgb, var(--color-primary) 70%, white);
+  --color-primary-500: var(--color-primary);
+  --color-primary-600: color-mix(in srgb, var(--color-primary) 90%, black);
+  --color-primary-700: color-mix(in srgb, var(--color-primary) 80%, black);
+  --color-primary-800: color-mix(in srgb, var(--color-primary) 70%, black);
+  --color-primary-900: color-mix(in srgb, var(--color-primary) 60%, black);
+  
+  --color-secondary-500: var(--color-secondary);
+  
+  /* Safe Area for Mobile Notches */
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-left: env(safe-area-inset-left, 0px);
+  --safe-area-right: env(safe-area-inset-right, 0px);
+}
+
+body {
+  @apply bg-gray-50 text-gray-900 transition-colors duration-300;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  padding: var(--safe-area-top) var(--safe-area-right) var(--safe-area-bottom) var(--safe-area-left);
+  min-height: 100vh;
+}
+
+.dark body {
+  @apply bg-gray-950 text-gray-100;
+}
+
