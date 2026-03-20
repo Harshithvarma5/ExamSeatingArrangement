@@ -13,7 +13,6 @@ import SystemSettings from './admin/SystemSettings';
 import AnalyticsReports from './admin/AnalyticsReports';
 import AuditLogs from './admin/AuditLogs';
 import UserProfile from './UserProfile';
-import AIAssistant from '../components/AIAssistant';
 
 const AdminDashboard = () => {
   const navigation = [
@@ -31,7 +30,6 @@ const AdminDashboard = () => {
 
   return (
     <DashboardLayout navigation={navigation}>
-      <AIAssistant />
       <Routes>
         <Route path="/" element={<AdminOverview />} />
         <Route path="/users" element={<ManageUsers />} />

@@ -14,7 +14,6 @@ The system has evolved into a comprehensive institutional-scale platform with de
 ### 1. 🤖 Artificial Intelligence & Logic
 - **Intelligent Seating v3**: An AI that uses **Historical Neighbor Avoidance** and **GPA Interleaving** to ensure students who sat together before or have similar grades are never seated adjacently.
 - **Clash Management (Multi-Exam)**: Interleave students from different subjects (e.g., Java and Python) in the same room to eliminate copying.
-- **Generative AI Admin Bot**: A natural-language assistant in the Admin Dashboard that answers queries and generates reports instantly (e.g., *"Show all absentees from CS"*).
 - **Accessibility-Aware Seating**: Automatically prioritizes students with health/disability needs to seats near entrances.
 
 ### 2. 🛡️ Advanced Security & Integrity

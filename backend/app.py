@@ -11,7 +11,6 @@ from routes.student_routes import student_bp
 from routes.seating_routes import seating_bp
 from routes.profile_routes import profile_bp
 from routes.notification_routes import notification_bp
-from routes.ai_routes import ai_bp
 
 def create_app():
     app = Flask(__name__)
@@ -28,7 +27,6 @@ def create_app():
     app.register_blueprint(seating_bp, url_prefix='/api')
     app.register_blueprint(profile_bp, url_prefix='/api/user')
     app.register_blueprint(notification_bp, url_prefix='/api/notifications')
-    app.register_blueprint(ai_bp, url_prefix='/api/admin/ai')
     
     @app.route('/api/health', methods=['GET'])
     def health_check():
