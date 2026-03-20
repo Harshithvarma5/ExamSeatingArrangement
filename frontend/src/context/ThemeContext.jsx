@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
+import api from '../services/api';
 
 export const ThemeContext = createContext();
 
@@ -18,8 +19,8 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     const fetchBranding = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/admin/settings/branding');
-        const data = await response.json();
+        const response = await api.get('/admin/settings/branding');
+        const data = response.data;
         setBranding(data);
         
         // Inject CSS variables into :root

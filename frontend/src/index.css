@@ -29,11 +29,21 @@
   --safe-area-right: env(safe-area-inset-right, 0px);
 }
 
+html, body {
+  overflow: hidden;
+  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+  position: fixed; /* Prevents bounce scroll on iOS which can cause layout shifts */
+}
+
 body {
   @apply bg-gray-50 text-gray-900 transition-colors duration-300;
   font-family: ui-sans-serif, system-ui, sans-serif;
-  padding: var(--safe-area-top) var(--safe-area-right) var(--safe-area-bottom) var(--safe-area-left);
-  min-height: 100vh;
+  min-height: 100vh; /* Fallback */
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
 }
 
 .dark body {

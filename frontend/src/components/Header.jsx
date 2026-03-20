@@ -15,36 +15,38 @@ const Header = ({ isSidebarOpen, toggleSidebar }) => {
     <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 h-16 flex items-center px-4 md:px-6 shrink-0 shadow-sm z-30 transition-colors">
       <HamburgerMenu isOpen={isSidebarOpen} toggle={toggleSidebar} />
       
-      <div className="flex items-center gap-2 sm:gap-3">
-        <GraduationCap className="h-6 w-6 text-primary-600 md:hidden" />
-        <div className="text-lg sm:text-xl font-black text-gray-800 dark:text-gray-100 tracking-tight whitespace-nowrap">
+      <div className="flex-1 flex items-center gap-2 sm:gap-3 ml-2 sm:ml-0 min-w-0">
+        <GraduationCap className="h-6 w-6 text-primary-600 md:hidden shrink-0" />
+        <div className="text-lg sm:text-xl font-black text-gray-800 dark:text-gray-100 tracking-tight whitespace-nowrap overflow-hidden text-ellipsis">
           <span className="hidden sm:inline">{t('dashboard')} </span>
           <span className="text-primary-600 font-black">SmartExam</span>
         </div>
       </div>
-      <div className="flex items-center space-x-3 ml-auto">
-        {/* Language Switcher */}
-        <button 
-          onClick={() => {
-            const langs = ['en', 'hi', 'te'];
-            const nextIdx = (langs.indexOf(lang) + 1) % langs.length;
-            setLang(langs[nextIdx]);
-          }}
-          className="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all text-gray-500 flex items-center gap-1.5 border border-transparent hover:border-gray-200 dark:hover:border-gray-700"
-          title="Switch Language"
-        >
-          <Languages className="w-4 h-4" />
-          <span className="text-[10px] font-black uppercase tracking-tighter">{lang}</span>
-        </button>
+      <div className="flex items-center space-x-1.5 sm:space-x-3 ml-auto">
+        <div className="hidden sm:flex items-center space-x-3">
+          {/* Language Switcher */}
+          <button 
+            onClick={() => {
+              const langs = ['en', 'hi', 'te'];
+              const nextIdx = (langs.indexOf(lang) + 1) % langs.length;
+              setLang(langs[nextIdx]);
+            }}
+            className="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all text-gray-500 flex items-center gap-1.5 border border-transparent hover:border-gray-200 dark:hover:border-gray-700"
+            title="Switch Language"
+          >
+            <Languages className="w-4 h-4" />
+            <span className="text-[10px] font-black uppercase tracking-tighter">{lang}</span>
+          </button>
 
-        {/* Dark Mode Toggle */}
-        <button 
-          onClick={toggleTheme}
-          className="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all text-gray-500 border border-transparent hover:border-gray-200 dark:hover:border-gray-700"
-          title="Toggle Theme"
-        >
-          {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-        </button>
+          {/* Dark Mode Toggle */}
+          <button 
+            onClick={toggleTheme}
+            className="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all text-gray-500 border border-transparent hover:border-gray-200 dark:hover:border-gray-700"
+            title="Toggle Theme"
+          >
+            {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          </button>
+        </div>
 
         <Link 
           to={`/${user?.role?.toLowerCase()}/notifications`}
