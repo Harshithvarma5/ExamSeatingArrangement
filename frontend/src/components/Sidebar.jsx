@@ -4,16 +4,30 @@ import { AuthContext } from '../context/AuthContext';
 import { LogOut, GraduationCap } from 'lucide-react';
 import { LanguageContext } from '../context/LanguageContext';
 
-const Sidebar = ({ navigation }) => {
+const Sidebar = ({ navigation, isOpen, onClose }) => {
   const { logout, user } = useContext(AuthContext);
   const { t } = useContext(LanguageContext);
 
   return (
-    <div className="w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 flex flex-col hidden md:flex transition-colors">
-      <div className="h-16 flex items-center px-6 border-b border-gray-200 dark:border-gray-800">
-        <GraduationCap className="h-8 w-8 text-primary-600 mr-2" />
-        <span className="text-lg font-black text-gray-900 dark:text-gray-100 tracking-tight">ExamSeat</span>
-      </div>
+    <>
+      {/* Mobile Overlay */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-gray-900/50 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300"
+          onClick={onClose}
+        />
+      )}
+
+      {/* Sidebar Container */}
+      <div className={`
+        fixed inset-y-0 left-0 w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 
+        flex flex-col z-50 transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:flex
+        ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+      `}>
+        <div className="h-16 flex items-center px-6 border-b border-gray-200 dark:border-gray-800 shrink-0">
+          <GraduationCap className="h-8 w-8 text-primary-600 mr-2" />
+          <span className="text-lg font-black text-gray-900 dark:text-gray-100 tracking-tight text-nowrap">ExamSeat Pro</span>
+        </div>
       
       <div className="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
         <div className="mb-6 px-2 text-[10px] font-black text-gray-400 dark:text-gray-600 uppercase tracking-[0.2em]">
@@ -38,7 +52,7 @@ const Sidebar = ({ navigation }) => {
         ))}
       </div>
 
-      <div className="p-4 border-t border-gray-200">
+      <div className="p-4 border-t border-gray-200 shrink-0">
         <button
           onClick={logout}
           className="flex items-center w-full px-3 py-2.5 text-sm font-bold text-gray-600 dark:text-gray-400 rounded-xl hover:bg-red-50 dark:hover:bg-red-900/10 hover:text-red-700 dark:hover:text-red-400 transition-all group border border-transparent hover:border-red-100 dark:hover:border-red-900/20"
@@ -48,6 +62,7 @@ const Sidebar = ({ navigation }) => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 

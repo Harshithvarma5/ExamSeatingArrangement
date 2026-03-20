@@ -2,18 +2,25 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { ThemeContext } from '../context/ThemeContext';
 import { LanguageContext } from '../context/LanguageContext';
-import { Bell, User, Sun, Moon, Languages } from 'lucide-react';
+import { Bell, User, Sun, Moon, Languages, GraduationCap } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import HamburgerMenu from './HamburgerMenu';
 
-const Header = () => {
+const Header = ({ isSidebarOpen, toggleSidebar }) => {
   const { user } = useContext(AuthContext);
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
   const { lang, setLang, t } = useContext(LanguageContext);
 
   return (
-    <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 h-16 flex items-center justify-between px-6 shrink-0 shadow-sm z-10 transition-colors">
-      <div className="text-xl font-black text-gray-800 dark:text-gray-100 hidden sm:block tracking-tight">
-        {t('dashboard')} <span className="text-primary-600 font-black">SmartExam</span>
+    <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 h-16 flex items-center px-4 md:px-6 shrink-0 shadow-sm z-30 transition-colors">
+      <HamburgerMenu isOpen={isSidebarOpen} toggle={toggleSidebar} />
+      
+      <div className="flex items-center gap-2 sm:gap-3">
+        <GraduationCap className="h-6 w-6 text-primary-600 md:hidden" />
+        <div className="text-lg sm:text-xl font-black text-gray-800 dark:text-gray-100 tracking-tight whitespace-nowrap">
+          <span className="hidden sm:inline">{t('dashboard')} </span>
+          <span className="text-primary-600 font-black">SmartExam</span>
+        </div>
       </div>
       <div className="flex items-center space-x-3 ml-auto">
         {/* Language Switcher */}
